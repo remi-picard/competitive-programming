@@ -1,11 +1,13 @@
 package com.mbouchenoire.competitive.programming.common.model.geometry;
 
+import java.util.Objects;
+
 public class Coord {
 
-    public final int x;
-    public final int y;
+    public final long x;
+    public final long y;
 
-    public Coord(int x, int y) {
+    public Coord(long x, long y) {
         this.x = x;
         this.y = y;
     }
@@ -17,8 +19,8 @@ public class Coord {
      * @param v the vector from which you want to create a coord
      */
     public Coord(Vector v) {
-        this.x = (int) v.x;
-        this.y = (int) v.y;
+        this.x = (long) v.x;
+        this.y = (long) v.y;
     }
 
     /**
@@ -87,11 +89,7 @@ public class Coord {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + x;
-        result = prime * result + y;
-        return result;
+        return Objects.hash(x, y);
     }
 
     @Override
