@@ -25,4 +25,9 @@ public class HashCodeInput {
     public Scanner getScanner() {
         return scanner;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

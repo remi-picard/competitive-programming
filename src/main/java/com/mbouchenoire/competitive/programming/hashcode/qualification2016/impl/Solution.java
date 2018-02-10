@@ -3,6 +3,8 @@ package com.mbouchenoire.competitive.programming.hashcode.qualification2016.impl
 import com.mbouchenoire.competitive.programming.common.model.geometry.Coord;
 import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeAlgorithm;
 import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeInput;
+import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeLogger;
+import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeSolution;
 import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.*;
 
 import java.util.*;
@@ -10,7 +12,7 @@ import java.util.*;
 public class Solution implements HashCodeAlgorithm {
 
     @Override
-    public List<String> run(HashCodeInput input) {
+    public HashCodeSolution run(HashCodeInput input, HashCodeLogger logger) {
         final Scanner scanner = input.getScanner();
         final String[] firstLine = scanner.nextLine().split(" ");
         final int rowCount = Integer.parseInt(firstLine[0]);

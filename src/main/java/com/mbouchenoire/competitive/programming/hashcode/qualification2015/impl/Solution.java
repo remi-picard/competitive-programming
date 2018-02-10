@@ -1,5 +1,7 @@
 package com.mbouchenoire.competitive.programming.hashcode.qualification2015.impl;
 
+import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeLogger;
+import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeSolution;
 import com.mbouchenoire.competitive.programming.hashcode.qualification2015.model.*;
 import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeAlgorithm;
 import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeInput;
@@ -10,7 +12,7 @@ import java.util.stream.Collectors;
 public class Solution implements HashCodeAlgorithm {
 
     @Override
-    public List<String> run(HashCodeInput input) {
+    public HashCodeSolution run(HashCodeInput input, HashCodeLogger logger) {
         final Scanner scanner = input.getScanner();
         final String[] firstLine = scanner.nextLine().split(" ");
         final int rowCount = Integer.parseInt(firstLine[0]);
@@ -138,7 +140,7 @@ public class Solution implements HashCodeAlgorithm {
 
         System.out.println("---> SCORE=" + score);
 
-        return servers.stream()
+        final List<String> lines = servers.stream()
                 .sorted(Comparator.comparingInt(Server::getId))
                 .map(server -> {
                     final Optional<Row> optionalServerRow = rows.stream()
@@ -155,5 +157,7 @@ public class Solution implements HashCodeAlgorithm {
                     }
                 })
                 .collect(Collectors.toList());
+
+        return new HashCodeSolution(lines, score);
     }
 }
