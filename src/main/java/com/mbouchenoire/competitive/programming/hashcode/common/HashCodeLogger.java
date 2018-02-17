@@ -14,10 +14,12 @@ public class HashCodeLogger {
     }
 
     public void info(Object o) {
-        info(o.toString());
+        info(o.toString(), "");
     }
 
-    public void info(CharSequence cs) {
-        System.out.println(input.toString() + " - " + ((double)stopWatch.getTime() / (double)1000) + "s: " + cs);
+    public void info(CharSequence cs, Object... values) {
+        final String prefix = input.toString() + " - " + ((double)stopWatch.getTime() / (double)1000) + "s: ";
+        System.out.printf(prefix + cs, values);
+        System.out.println();
     }
 }
