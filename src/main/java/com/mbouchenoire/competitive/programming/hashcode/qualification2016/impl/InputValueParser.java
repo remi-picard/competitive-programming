@@ -1,19 +1,22 @@
 package com.mbouchenoire.competitive.programming.hashcode.qualification2016.impl;
 
 import com.mbouchenoire.competitive.programming.common.model.geometry.Coord;
-import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeAlgorithm;
-import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeInput;
-import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeLogger;
-import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeSolution;
-import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.*;
+import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeInputValueParser;
+import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.Drone;
+import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.InputValue;
+import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.Order;
+import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.Product;
+import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.ProductType;
+import com.mbouchenoire.competitive.programming.hashcode.qualification2016.model.Warehouse;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-public class Solution implements HashCodeAlgorithm {
+public class InputValueParser implements HashCodeInputValueParser<InputValue> {
 
     @Override
-    public HashCodeSolution run(HashCodeInput input, HashCodeLogger logger) {
-        final Scanner scanner = input.getScanner();
+    public InputValue parse(Scanner scanner) {
         final String[] firstLine = scanner.nextLine().split(" ");
         final int rowCount = Integer.parseInt(firstLine[0]);
         final int columnCount = Integer.parseInt(firstLine[1]);
@@ -103,7 +106,7 @@ public class Solution implements HashCodeAlgorithm {
             orders.add(order);
         }
 
-        throw new UnsupportedOperationException("solution implemented");
+        return new InputValue(orders, warehouses, drones);
     }
 
     private static ProductType findProductType(int id, List<ProductType> types) {

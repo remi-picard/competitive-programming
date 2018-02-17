@@ -17,7 +17,7 @@ public class HashCodeApplication {
         this.session = session;
     }
 
-    public void run(HashCodeAlgorithm algorithm) throws IOException {
+    public <T> void run(HashCodeAlgorithm algorithm, HashCodeInputValueParser<T> inputValueParser) throws IOException {
         final ClassLoader classLoader = Application.class.getClassLoader();
         final String inputFolderPath = "hashcode/" + session.getPhase().getName() + session.getYear() + "/input";
         final URL resource = classLoader.getResource(inputFolderPath);
@@ -27,12 +27,13 @@ public class HashCodeApplication {
 
         for (File inputFile : Objects.requireNonNull(inputFolder.listFiles())) {
             final Scanner scanner = new Scanner(inputFile);
-            final HashCodeInput input = new HashCodeInput(session, inputFile.getName(), scanner);
+            final T inputValue = inputValueParser.parse(scanner);
+            final HashCodeInput<T> input = new HashCodeInput<>(session, inputFile.getName(), inputValue);
             final HashCodeLogger logger = new HashCodeLogger(input);
 
             System.out.println();
             logger.info("============== START ==============");
-            final HashCodeSolution solution = algorithm.run(input, logger);
+            final HashCodeSolution solution = algorithm.run(inputValue, logger);
             System.out.println();
             logger.info("========== SCORE: " + solution.getScore() + " ==========");
 

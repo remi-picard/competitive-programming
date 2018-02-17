@@ -1,6 +1,6 @@
 package com.mbouchenoire.competitive.programming.hashcode.common;
 
-public interface HashCodeAlgorithm {
+public interface HashCodeAlgorithm<T> {
 
-    HashCodeSolution run(HashCodeInput input, HashCodeLogger logger);
+    HashCodeSolution run(T input, HashCodeLogger logger);
 }
