@@ -57,6 +57,12 @@ public class Coord {
         return dx * dx + dy * dy;
     }
 
+    public long distanceGrid(Coord coord) {
+        long dx = Math.abs(coord.x - x);
+        long dy = Math.abs(coord.y - y);
+        return dx + dy;
+    }
+
     /**
      * Substracts to the instance x and y the values of the given coord.
      *
