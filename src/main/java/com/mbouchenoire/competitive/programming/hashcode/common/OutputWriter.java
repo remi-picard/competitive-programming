@@ -28,7 +28,7 @@ public class OutputWriter {
         outputFolder.mkdir();
 
         final String stringTimestamp = DATE_FORMATTER.format(LocalDateTime.now());
-        final String outputFileName = stringTimestamp + "__" + input.getName().replace(".in.", ".out.");
+        final String outputFileName = stringTimestamp + "__" + input.getName().replace(".in", ".out");
 
         final File outputFile = new File(outputFolderPath, outputFileName);
         outputFile.getParentFile().mkdirs();
