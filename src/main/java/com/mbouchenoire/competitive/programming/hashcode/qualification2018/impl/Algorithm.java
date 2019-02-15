@@ -43,8 +43,9 @@ public class Algorithm implements HashCodeAlgorithm<InputValue> {
                     final long score2 = vehicule.score(o2, bonus);
 
                     if (score1 != score2) {
-                        return Integer.
+                        return Long.compare(score1, score2);
                     }
+                    return 0;
                 })
                 .findFirst();
 //        final List<Ride> collect = rides.stream()
