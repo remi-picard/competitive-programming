@@ -37,5 +37,17 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.5</version>
     </dependency>
+
+    <!-- LOGS -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>net.logstash.logback</groupId>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <version>5.3</version>
+    </dependency>
   </dependencies>
 </project>

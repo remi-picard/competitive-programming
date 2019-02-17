@@ -1,11 +1,11 @@
 package com.mbouchenoire.competitive.programming.hashcode.common;
 
 import com.mbouchenoire.competitive.programming.hashcode.qualification2015.Application;
+import org.slf4j.MDC;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -26,6 +26,7 @@ public class HashCodeApplication {
         int finalScore = 0;
 
         for (File inputFile : Objects.requireNonNull(inputFolder.listFiles())) {
+            MDC.put("input", String.valueOf(inputFile.getName()));
             final Scanner scanner = new Scanner(inputFile);
             final T inputValue = inputValueParser.parse(scanner);
             final HashCodeInput<T> input = new HashCodeInput<>(session, inputFile.getName(), inputValue);

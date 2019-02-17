@@ -1,0 +1,17 @@
+<configuration>
+    <appender name="ELK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/competitive-programming.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>competitive-programming.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeMdcKeyName>input</includeMdcKeyName>
+            <includeMdcKeyName>vehicule-index</includeMdcKeyName>
+            <includeMdcKeyName>ride-index</includeMdcKeyName>
+        </encoder>
+    </appender>
+    <root level="DEBUG">
+        <appender-ref ref="ELK"/>
+    </root>
+</configuration>

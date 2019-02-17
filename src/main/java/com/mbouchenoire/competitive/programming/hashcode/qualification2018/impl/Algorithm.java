@@ -6,13 +6,17 @@ import com.mbouchenoire.competitive.programming.hashcode.common.HashCodeSolution
 import com.mbouchenoire.competitive.programming.hashcode.qualification2018.model.InputValue;
 import com.mbouchenoire.competitive.programming.hashcode.qualification2018.model.Ride;
 import com.mbouchenoire.competitive.programming.hashcode.qualification2018.model.Vehicule;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static jdk.nashorn.internal.objects.NativeMath.max;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Algorithm implements HashCodeAlgorithm<InputValue> {
+
+    final static Logger LOGGER = LoggerFactory.getLogger(Algorithm.class);
 
     @Override
     public HashCodeSolution run(InputValue input, HashCodeLogger logger) {
@@ -25,6 +29,9 @@ public class Algorithm implements HashCodeAlgorithm<InputValue> {
 
                 if (bestRide != null) {
                     vehicule.ride(bestRide);
+                    MDC.put("vehicule-index", String.valueOf(vehicule.index));
+                    MDC.put("ride-index", String.valueOf(bestRide.index));
+                    this.LOGGER.info("Vehicule {} rides to {}", vehicule.toString(), bestRide.toString());
                 } else {
                     break;
                 }

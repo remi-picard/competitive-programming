@@ -1,0 +1,10 @@
+elk:
+  image: sebp/elk
+  ports:
+    - "5601:5601"
+    - "9200:9200"
+    - "5044:5044"
+  volumes:
+    - "$PWD/01-input-competitive-programming.conf:/etc/logstash/conf.d/01-input-competitive-programming.conf"
+    - "D:/var/log/competitive-programming.log:/var/log/competitive-programming.log"
+    - "D:/tmp/elk-data:/var/lib/elasticsearch"

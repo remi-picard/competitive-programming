@@ -75,4 +75,13 @@ public class Vehicule {
     public List<Ride> rides() {
         return new ArrayList<>(this.rides);
     }
+
+    @Override
+    public String toString() {
+        return "Vehicule{" +
+                "index=" + index +
+                ", coord=" + coord +
+                ", step=" + step +
+                '}';
+    }
 }
